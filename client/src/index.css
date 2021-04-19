@@ -1,3 +1,30 @@
+:root{
+  --green: #1db954;
+  --hover-green : #179242;
+  --grey: rgb(24, 24, 24);
+  --black : black;
+  --white : white;
+}
+
+@font-face {
+  font-family: 'Circular Book';
+  src: url(./fonts/CircularStd-Book.woff);
+}
+
+@font-face {
+  font-family: 'Circular Black';
+  src: url(./fonts/CircularStd-Black.woff);
+}
+
+@font-face {
+  font-family: 'Circular Bold';
+  src: url(./fonts/CircularStd-Bold.woff);
+}
+
+@font-face {
+  font-family: 'Circular Medium';
+  src: url(./fonts/CircularStd-Medium.woff);
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +37,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+*{
+  font-family: 'Circular Medium';
 }
