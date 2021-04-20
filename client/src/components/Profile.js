@@ -1,15 +1,44 @@
-import React, { useContext } from 'react'
-import { useHistory } from 'react-router'
-import { SpotifyContext } from '../spotify'
+import React, { useEffect, useState } from 'react'
+import styled from 'styled-components'
+import { logout, getUserDetails } from '../spotify'
+import { OutlineButton } from '../styles/Buttons'
+import Loader from './Loader'
+
+const ProfileContainer = styled.div`
+    min-height:100vh;
+    background:var(--grey);
+`
+const Heading = styled.h1`
+    color: var(--white);
+`
+
+const PlainText = styled.p`
+    color: var(--white);
+`
+
 function Profile() {
-    const history = useHistory();
-    if (!localStorage.getItem('spotifile_access_token') || !localStorage.getItem("spotifile_refresh_token")) { history.push('/') }
-    const { logout } = useContext(SpotifyContext)
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        getUserDetails()
+            .then(res => setUser(res.data))
+            .catch(err => console.log(err))
+    }, []);
 
     return (
         <div>
-            Profile
-            <button onClick={logout}>Logout</button>
+            {
+                user ?
+                    <ProfileContainer className='hey'>
+                        <div>
+                            <Heading>{user.display_name}</Heading>
+                            <PlainText>{user.email}</PlainText>
+                        </div>
+                        <OutlineButton onClick={logout}>Logout</OutlineButton>
+                    </ProfileContainer>
+                    :
+                    <Loader />
+            }
         </div>
     )
 }

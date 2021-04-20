@@ -19,7 +19,7 @@ const Heading = styled.h1`
 
 function Login() {
     const history = useHistory()
-    if (localStorage.getItem('spotifile_access_token') || localStorage.getItem("spotifile_refresh_token")) { history.push('/profile') }
+    if (localStorage.getItem('spotifile_access_token') || localStorage.getItem("spotifile_refresh_token")) { history.push('/') }
     return (
         <Container>
             <Heading>Spoti<span style={{ color: "var(--green)" }}>File</span></Heading>

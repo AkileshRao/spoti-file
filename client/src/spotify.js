@@ -1,31 +1,31 @@
-import React, { useState, useEffect } from "react"
-import { useHistory } from "react-router-dom"
 import { getHashParams } from "./utils"
+import axios from 'axios'
 
-const SpotifyContext = React.createContext()
+const { access_token, refresh_token } = getHashParams();
+const URL = "https://api.spotify.com/v1/"
 
-const SpotifyProvider = ({ children }) => {
-    const history = useHistory()
-    useEffect(() => {
-        const { access_token, refresh_token } = getHashParams();
-        if (access_token || refresh_token) {
-            localStorage.setItem("spotifile_access_token", access_token)
-            localStorage.setItem("spotifile_refresh_token", refresh_token)
-            setTimeout(() => history.push('/profile'), 0)
-        }
-    }, [])
-
-    const logout = () => {
-        localStorage.removeItem("spotifile_access_token")
-        localStorage.removeItem("spotifile_refresh_token")
-        history.push("/")
-    }
-
-    return (
-        <SpotifyContext.Provider value={{
-            logout
-        }}>{children}</SpotifyContext.Provider>
-    )
+if (access_token || refresh_token) {
+    console.log(access_token, refresh_token);
+    localStorage.setItem("spotifile_access_token", access_token)
+    localStorage.setItem("spotifile_refresh_token", refresh_token)
+    setTimeout(() => window.location.href = `${process.env.FRONTEND_URI || 'http://localhost:3000/profile'}`, 0)
 }
 
-export { SpotifyContext, SpotifyProvider }
+const localAccessToken = localStorage.getItem('spotifile_access_token')
+const localRefreshToken = localStorage.getItem('spotifile_refresh_token')
+
+export const logout = () => {
+    localStorage.removeItem("spotifile_access_token")
+    localStorage.removeItem("spotifile_refresh_token")
+    window.location.reload()
+}
+
+//APIs
+
+const headers = {
+    Authorization: `Bearer ${localAccessToken}`,
+    'Content-Type': 'application/json',
+};
+
+export const getUserDetails = () => axios.get(`${URL}me`, { headers })
+

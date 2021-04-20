@@ -1,21 +1,16 @@
 import Login from './components/Login'
-import Profile from './components/Profile'
+import Main from './components/Main'
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
-import { SpotifyProvider } from './spotify';
 
 function App() {
   return (
     <div>
-
       <Router>
-        <SpotifyProvider>
-          <Switch>
-            <Route exact path='/' component={Login} />
-            <Route path='/profile' component={Profile} />
-            <Redirect from="*" to="/" />
-          </Switch>
-
-        </SpotifyProvider>
+        <Switch>
+          <Route path='/login' component={Login} />
+          <Route path='/' component={Main} />
+          <Redirect from="*" to="/" />
+        </Switch>
       </Router>
     </div>
   );

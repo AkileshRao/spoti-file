@@ -2,6 +2,7 @@
   --green: #1db954;
   --hover-green : #179242;
   --grey: rgb(24, 24, 24);
+  --transparent: transparent;
   --black : black;
   --white : white;
 }
@@ -41,4 +42,6 @@ code {
 
 *{
   font-family: 'Circular Medium';
+  box-sizing: border-box;
+  outline:none;
 }
