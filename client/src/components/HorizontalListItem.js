@@ -14,6 +14,7 @@ const HLItem = styled.div`
     border-radius:5px;
     opacity:.7;
     transition:.2s ease-in-out;
+    box-shadow : 0px 0px 20px rgba(0,0,0, .1);  
     &:hover{
         opacity:1;
     }
@@ -35,9 +36,9 @@ const HLItem = styled.div`
 
 function HorizontalListItem({ id, name, image }) {
     return (
-        <HLItem>
+        <HLItem title={name}>
             <img src={image} alt={name} height="125" />
-            <p title={name}>{name.length > 12 ? name.slice(0, 12) + "..." : name}</p>
+            <p >{name.length > 12 ? name.slice(0, 12) + "..." : name}</p>
         </HLItem>
     )
 }

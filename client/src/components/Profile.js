@@ -4,17 +4,12 @@ import { getUserDetails, getUsersFollowedArtists, getUsersTopTracks, getUsersTop
 import HorizontalList from './HorizontalList'
 import Loader from './Loader'
 
-const ProfileContainer = styled.div`
-    min-height:100vh;
-    background:var(--grey);
-`
 const Top = styled.div`
     display:flex;
     align-items:center;
     flex-direction:column;
     gap:1rem;
-    background : linear-gradient(to bottom, var(--black), var(--grey));
-    padding:4rem 2rem 0 2rem;  
+    margin-top:2rem;
     img{ border-radius:100px; border : 3px solid var(--green); padding:.7rem;};
 `
 
@@ -74,7 +69,7 @@ function Profile() {
         <div>
             {
                 user ?
-                    <ProfileContainer>
+                    <div>
                         <Top>
                             <img src={user.images[0].url} alt="" height='175' />
                             <TopData>
@@ -92,9 +87,9 @@ function Profile() {
                             </TopData>
                         </Top>
 
-                        <HorizontalList title="TOP TRACKS" data={topTracks}></HorizontalList>
-                        <HorizontalList title="TOP ARTISTS" data={topArtists}></HorizontalList>
-                    </ProfileContainer>
+                        <HorizontalList title="TOP TRACKS" data={topTracks} link='/tracks'></HorizontalList>
+                        <HorizontalList title="TOP ARTISTS" data={topArtists} link='/artists'></HorizontalList>
+                    </div>
                     :
                     <Loader />
             }

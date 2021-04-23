@@ -8,3 +8,10 @@ export const getHashParams = () => {
     }
     return hashParams;
 };
+
+export const msToMinSec = ms => {
+    const seconds = Math.floor(ms / 1000)
+    const minutes = Math.floor(seconds / 60)
+    const mainSeconds = seconds % 60
+    return minutes + ":" + (mainSeconds < 10 ? "0" + mainSeconds : mainSeconds)
+}

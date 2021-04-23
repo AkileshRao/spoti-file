@@ -1,8 +1,10 @@
 import React, { useRef } from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import { DirectionButton } from '../styles/Buttons'
 import HorizontalListItem from './HorizontalListItem'
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md'
+
 const HList = styled.div`
     padding:0 2rem;
     scroll-behavior: smooth;
@@ -24,9 +26,18 @@ const HListHead = styled.div`
     display:flex;
     justify-content:space-between;
     align-items:center;
+    a{
+        text-decoration:none;
+        font-size: .9rem;
+        font-family: Circular Bold;
+        transition : .2s ease-in-out;
+        &:hover{
+            color:var(--green) !important;
+        }
+    }
 `
 
-function HorizontalList({ title, data }) {
+function HorizontalList({ title, data, link }) {
     const listRef = useRef(null)
 
     const goBack = () => {
@@ -41,11 +52,11 @@ function HorizontalList({ title, data }) {
     return (
         <HList >
             <HListHead>
-                <h5 style={{
+                <Link to={link} style={{
                     color: 'var(--white)',
                     letterSpacing: '2px',
                     margin: '1rem 0'
-                }}>{title}</h5>
+                }}>{title}</Link>
                 <div style={{ display: 'flex', gap: '.5rem', marginBottom: '1rem' }}>
                     <DirectionButton onClick={goBack}><MdChevronLeft /></DirectionButton>
                     <DirectionButton onClick={goNext}><MdChevronRight /></DirectionButton>

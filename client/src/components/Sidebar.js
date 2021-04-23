@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import { FaRegUser, FaHistory, FaGithub } from 'react-icons/fa'
+import { FaRegUserCircle, FaHistory, FaMusic } from 'react-icons/fa'
+import { IoMdMusicalNote } from 'react-icons/io'
+import { RiHistoryLine } from 'react-icons/ri'
 import { IoMdPower } from 'react-icons/io'
 import { LinksList, NavItem, SidebarContainer } from '../styles/Sidebar'
 import styled from 'styled-components'
@@ -34,10 +36,13 @@ function Sidebar() {
             </a>
             <LinksList>
                 <NavItem>
-                    <Link to='/profile' className={currentPage == '/profile' ? 'active' : null}><FaRegUser /></Link>
+                    <Link to='/profile' className={currentPage == '/profile' ? 'active' : null}><FaRegUserCircle /></Link>
                 </NavItem>
                 <NavItem>
-                    <Link to='/recents' className={currentPage == '/recents' ? 'active' : null}><FaHistory /></Link>
+                    <Link to='/recents' className={currentPage == '/recents' ? 'active' : null}><RiHistoryLine /></Link>
+                </NavItem>
+                <NavItem>
+                    <Link to='/tracks' className={currentPage == '/tracks' ? 'active' : null}><IoMdMusicalNote /></Link>
                 </NavItem>
             </LinksList>
             <SVGIcon onClick={logout} >
