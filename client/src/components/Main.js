@@ -20,7 +20,7 @@ function Main() {
     return (
         <MainContainer>
             <Sidebar />
-            <div style={{ flex: 1 }}>
+            <div style={{ flex: 1, paddingLeft: "75px" }}>
                 <Route path='/profile' component={Profile} />
                 <Route path='/recents' component={Recents} />
                 <Redirect path='*' to='/profile' />

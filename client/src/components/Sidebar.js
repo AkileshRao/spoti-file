@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { FaRegUser, FaHistory, FaGithub } from 'react-icons/fa'
+import { IoMdPower } from 'react-icons/io'
 import { LinksList, NavItem, SidebarContainer } from '../styles/Sidebar'
 import styled from 'styled-components'
+import { logout } from '../spotify'
 
-const GithubIcon = styled.a`
+const SVGIcon = styled.a`
     svg{
         font-size: 1.5rem;
         color: var(--white);
@@ -13,7 +15,6 @@ const GithubIcon = styled.a`
         text-decoration:none;
         transition:.2s ease-in-out;
         &:hover{
-            background:var(--grey);
             opacity:1;
         }
     }
@@ -39,9 +40,9 @@ function Sidebar() {
                     <Link to='/recents' className={currentPage == '/recents' ? 'active' : null}><FaHistory /></Link>
                 </NavItem>
             </LinksList>
-            <GithubIcon href='https://github.com/AkileshRao/spoti-file'>
-                <FaGithub />
-            </GithubIcon>
+            <SVGIcon onClick={logout} >
+                <IoMdPower />
+            </SVGIcon>
         </SidebarContainer>
     )
 }

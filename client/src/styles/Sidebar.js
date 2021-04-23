@@ -9,6 +9,8 @@ export const SidebarContainer = styled.div`
     background:var(--black);
     height:100vh;
     min-width:75px;
+    position:fixed;
+    z-index:10;
 `
 
 export const LinksList = styled.div`

@@ -1,6 +1,9 @@
+
+
 :root{
   --green: #1db954;
   --hover-green : #179242;
+  --lightgrey : #2d2d2d;
   --grey: rgb(24, 24, 24);
   --transparent: transparent;
   --black : black;
@@ -33,6 +36,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 
 code {
@@ -45,3 +49,5 @@ code {
   box-sizing: border-box;
   outline:none;
 }
+
+
