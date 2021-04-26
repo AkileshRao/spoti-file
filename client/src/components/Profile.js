@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { getUserDetails, getUsersFollowedArtists, getUsersTopTracks, getUsersTopArtists } from '../spotify'
-import HorizontalList from './HorizontalList'
+import $HorizontalList from './HorizontalList'
 import Loader from './Loader'
 
-const Top = styled.div`
+const $Top = styled.div`
     display:flex;
     align-items:center;
     flex-direction:column;
@@ -13,20 +13,20 @@ const Top = styled.div`
     img{ border-radius:100px; border : 3px solid var(--green); padding:.7rem;};
 `
 
-const TopData = styled.div`
+const $TopData = styled.div`
     margin:0 1rem;
     display:flex;
     flex-direction:column;
     align-items:center;
     h1{ color: var(--white); margin: 0; };
 `
-const Data = styled.div`
+const $Data = styled.div`
     display:flex;
     align-items:center;
     margin-bottom:.5rem;
     gap:1.5rem;
 `
-const FCount = styled.div`
+const $FCount = styled.div`
     display:flex;
     align-items:center;
     flex-direction:column;
@@ -66,29 +66,29 @@ function Profile() {
     }, []);
 
     return (
-        <div>
+        <div style={{ padding: '2rem' }}>
             {
                 user ?
                     <div>
-                        <Top>
+                        <$Top>
                             <img src={user.images[0].url} alt="" height='175' />
-                            <TopData>
+                            <$TopData>
                                 <h1>{user.display_name}</h1>
-                                <Data>
-                                    <FCount>
+                                <$Data>
+                                    <$FCount>
                                         <p className='count-heading'>FOLLOWERS</p>
                                         <p className='count-value'>{user.followers.total}</p>
-                                    </FCount>
-                                    <FCount>
+                                    </$FCount>
+                                    <$FCount>
                                         <p className='count-heading'>FOLLOWING</p>
                                         <p className='count-value'>{followingCount}</p>
-                                    </FCount>
-                                </Data>
-                            </TopData>
-                        </Top>
+                                    </$FCount>
+                                </$Data>
+                            </$TopData>
+                        </$Top>
 
-                        <HorizontalList title="TOP TRACKS" data={topTracks} link='/tracks'></HorizontalList>
-                        <HorizontalList title="TOP ARTISTS" data={topArtists} link='/artists'></HorizontalList>
+                        <$HorizontalList title="TOP TRACKS" data={topTracks} link='/tracks'></$HorizontalList>
+                        <$HorizontalList title="TOP ARTISTS" data={topArtists} link='/artists'></$HorizontalList>
                     </div>
                     :
                     <Loader />

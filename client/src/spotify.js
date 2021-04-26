@@ -74,3 +74,9 @@ export const getUsersFollowedArtists = () => axios.get(`${URL}me/following`, { h
 export const getUsersTopArtists = (limit = 25) => axios.get(`${URL}me/top/artists`, { headers, params: { limit } })
 
 export const getUsersTopTracks = (limit = 25) => axios.get(`${URL}me/top/tracks`, { headers, params: { limit } })
+
+export const getATrack = (id) => axios.get(`${URL}tracks/${id}`, { headers })
+
+export const getRelatedArtists = (id) => axios.get(`${URL}artists/${id}/related-artists`, { headers })
+
+export const getArtistTopTracks = (id) => axios.get(`${URL}artists/${id}/top-tracks`, { headers, params: { country: "IN" } })

@@ -3,10 +3,11 @@ import { Redirect, Route, useHistory, Switch } from 'react-router'
 import Recents from './Recents'
 import Sidebar from './Sidebar'
 import Tracks from './Tracks'
+import Track from './Track'
 import Profile from './Profile'
 import styled from 'styled-components'
 
-const RouteContainer = styled.div`
+const $RouteContainer = styled.div`
     flex: 1 1 0%;
     background: linear-gradient(to top, var(--black), var(--grey));
     min-height: 100vh;
@@ -20,14 +21,15 @@ function Main() {
     return (
         <div style={{ display: "flex" }}>
             <Sidebar />
-            <RouteContainer style={{ flex: 1, paddingLeft: "75px" }}>
+            <$RouteContainer style={{ flex: 1, paddingLeft: "75px" }}>
                 <Switch>
                     <Route path='/profile' component={Profile} />
                     <Route path='/recents' component={Recents} />
-                    <Route path='/tracks' component={Tracks} />
+                    <Route exact path='/tracks' component={Tracks} />
+                    <Route path='/tracks/:id' component={Track} />
                     <Redirect path='*' to='/profile' />
                 </Switch>
-            </RouteContainer>
+            </$RouteContainer>
         </div>
     )
 }

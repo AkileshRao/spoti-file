@@ -3,8 +3,9 @@ import styled from 'styled-components'
 import { getUsersTopTracks } from '../spotify'
 import { msToMinSec } from '../utils'
 import Loader from './Loader'
+import { useHistory } from 'react-router-dom'
 
-const Track = styled.div`
+const $Track = styled.div`
     color: var(--white);
     display: flex;
     align-items:center;
@@ -35,6 +36,7 @@ const Track = styled.div`
 
 
 function Tracks() {
+    const history = useHistory()
     const [tracks, setTracks] = useState(null)
     useEffect(() => {
         getUsersTopTracks(50)
@@ -50,16 +52,16 @@ function Tracks() {
                         <div>
                             {
                                 tracks && tracks.map(track => (
-                                    <Track key={track.id}>
-                                        <div class='track-info'>
+                                    <$Track key={track.id} onClick={() => history.push(`/tracks/${track.id}`)}>
+                                        <div className='track-info'>
                                             <img src={track.album.images[0].url} alt={track.name} height='50' />
-                                            <div class='track-info-text'>
+                                            <div className='track-info-text'>
                                                 <p>{track.name}</p>
                                                 <p style={{ opacity: '.5' }}>{track.album.artists[0].name} &nbsp;·&nbsp; {track.album.name}</p>
                                             </div>
                                         </div>
                                         <p>{msToMinSec(track.duration_ms)}</p>
-                                    </Track>
+                                    </$Track>
                                 ))
                             }
                         </div>

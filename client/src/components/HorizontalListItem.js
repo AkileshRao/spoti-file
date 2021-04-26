@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const HLItem = styled.div`
+const $HLItem = styled.div`
     position: relative;
     margin-bottom:2rem;
     display:flex;
@@ -36,10 +36,10 @@ const HLItem = styled.div`
 
 function HorizontalListItem({ id, name, image }) {
     return (
-        <HLItem title={name}>
+        <$HLItem title={name}>
             <img src={image} alt={name} height="125" />
             <p >{name.length > 12 ? name.slice(0, 12) + "..." : name}</p>
-        </HLItem>
+        </$HLItem>
     )
 }
 
