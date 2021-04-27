@@ -1,8 +1,6 @@
 import React from 'react'
 
-function Recents() {
-    const child = { width: `100px`, height: `100%` }
-
+const Recents = () => {
     return (
         <div>
             Recents

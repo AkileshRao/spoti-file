@@ -1,53 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components';
-import { getArtistTopTracks, getATrack, getRelatedArtists } from '../spotify';
-import { $OutlineButton } from '../styles/Buttons';
-import { msToMinSec } from '../utils';
-import HorizontalList from './HorizontalList';
 import { AiFillPlayCircle } from 'react-icons/ai'
-import { useHistory } from 'react-router';
-const $TrackContainer = styled.div`
-    color : var(--white);
-    padding:2rem;
-    .track-info{
-        display: flex;
-        align-items:center;
-        gap:1.5rem;
-        margin-bottom:2rem;
-        h1{ margin : .5rem 0};
-        .track-image{
-            position:relative;
-            display:flex;
-            align-items:center;
-            justify-content : center;
-            cursor:pointer;
-            img{transition: .2s ease-in-out;}
-            svg{
-                position: absolute;
-                opacity:0;
-                transition: .2s ease-in-out;
-                font-size:4rem;
-                color: var(--green);
-                filter: brightness(1);
-            };
-            &:hover{
-                img{filter: brightness(.5);}
-                svg{opacity:1;}
-            }
-        }
-        p{
-            margin : .5rem 0 .8rem 0;
-            opacity: .5;
-            font-family: Circular Book;
-            letter-spacing : 1px;
-            font-size : .9rem;
-        }
-    }
-    .related-artists{ margin-top:2rem }
-`
 
-function Track({ match }) {
-    const history = useHistory()
+import { getArtistTopTracks, getATrack, getRelatedArtists } from '../../common/scripts/spotify';
+import { $OutlineButton } from '../../common/styles/Buttons';
+import { msToMinSec } from '../../common/scripts';
+import HorizontalList from '../HorizontalList';
+import TrackContainer from './styles';
+
+const Track = ({ match }) => {
     const [track, setTrack] = useState(null);
     const [relatedArtists, setRelatedArtists] = useState(null);
     const [topTracks, setTopTracks] = useState(null);
@@ -67,14 +27,13 @@ function Track({ match }) {
         }).catch(err => console.log(err))
     }, [])
 
-
     return (
         <div>
             { track &&
-                <$TrackContainer>
+                <TrackContainer>
                     <div className='track-info'>
                         <div className='track-image' onClick={() => { window.location.href = track.external_urls.spotify }}>
-                            <img src={track.album.images[0].url} alt={track.name} height='150' style={{ borderRadius: "5px" }} />
+                            <img src={track.album.images[0].url} alt={track.name} height='150' />
                             <AiFillPlayCircle />
                         </div>
                         <div className='track-text'>
@@ -85,7 +44,7 @@ function Track({ match }) {
                     </div>
                     <HorizontalList title="RELATED ARTISTS" data={relatedArtists} link="#"></HorizontalList>
                     <HorizontalList title={`TOP TRACKS BY ${track.artists[0].name.toUpperCase()}`} data={topTracks} link="#"></HorizontalList>
-                </$TrackContainer>
+                </TrackContainer>
             }
         </div>
 

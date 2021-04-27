@@ -1,4 +1,4 @@
-import { getHashParams } from "./utils"
+import { getHashParams } from "."
 import axios from 'axios'
 
 const URL = "https://api.spotify.com/v1/"

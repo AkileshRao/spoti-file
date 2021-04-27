@@ -1,41 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
-import { getUserDetails, getUsersFollowedArtists, getUsersTopTracks, getUsersTopArtists } from '../spotify'
-import $HorizontalList from './HorizontalList'
-import Loader from './Loader'
 
-const $Top = styled.div`
-    display:flex;
-    align-items:center;
-    flex-direction:column;
-    gap:1rem;
-    margin-top:2rem;
-    img{ border-radius:100px; border : 3px solid var(--green); padding:.7rem;};
-`
+import { getUserDetails, getUsersFollowedArtists, getUsersTopTracks, getUsersTopArtists } from '../../common/scripts/spotify'
+import HorizontalList from '../../components/HorizontalList'
+import Loader from '../../components/Loader'
+import ProfileContainer from './styles'
 
-const $TopData = styled.div`
-    margin:0 1rem;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    h1{ color: var(--white); margin: 0; };
-`
-const $Data = styled.div`
-    display:flex;
-    align-items:center;
-    margin-bottom:.5rem;
-    gap:1.5rem;
-`
-const $FCount = styled.div`
-    display:flex;
-    align-items:center;
-    flex-direction:column;
-    p{letter-spacing:2px;font-size:.9rem;}
-    .count-heading{ margin:1rem 0 0 0; opacity:.5 ;color: var(--white)};
-    .count-value{ margin:.5rem; color :var(--green)}
-`
-
-function Profile() {
+const Profile = () => {
     const [user, setUser] = useState(null);
     const [followingCount, setFollowingCount] = useState(0)
     const [topTracks, setTopTracks] = useState(null)
@@ -69,27 +39,27 @@ function Profile() {
         <div style={{ padding: '2rem' }}>
             {
                 user ?
-                    <div>
-                        <$Top>
+                    <ProfileContainer>
+                        <div className='pc-top'>
                             <img src={user.images[0].url} alt="" height='175' />
-                            <$TopData>
+                            <div className='pc-top-data'>
                                 <h1>{user.display_name}</h1>
-                                <$Data>
-                                    <$FCount>
+                                <div className='pc-top-data-info'>
+                                    <div className='pc-top-data-info-count'>
                                         <p className='count-heading'>FOLLOWERS</p>
                                         <p className='count-value'>{user.followers.total}</p>
-                                    </$FCount>
-                                    <$FCount>
+                                    </div>
+                                    <div className='pc-top-data-info-count'>
                                         <p className='count-heading'>FOLLOWING</p>
                                         <p className='count-value'>{followingCount}</p>
-                                    </$FCount>
-                                </$Data>
-                            </$TopData>
-                        </$Top>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                        <$HorizontalList title="TOP TRACKS" data={topTracks} link='/tracks'></$HorizontalList>
-                        <$HorizontalList title="TOP ARTISTS" data={topArtists} link='/artists'></$HorizontalList>
-                    </div>
+                        <HorizontalList title="TOP TRACKS" data={topTracks} link='/tracks'></HorizontalList>
+                        <HorizontalList title="TOP ARTISTS" data={topArtists} link='/artists'></HorizontalList>
+                    </ProfileContainer>
                     :
                     <Loader />
             }
