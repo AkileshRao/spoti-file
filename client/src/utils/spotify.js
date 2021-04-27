@@ -89,7 +89,7 @@ export const getArtistTopTracks = id => axios.get(`${URL}artists/${id}/top-track
 //User
 export const getUserDetails = () => axios.get(`${URL}me`, { headers });
 export const getUserSavedAlbums = () => axios.get(`${URL}me/albums`, { headers });
-export const getUserSavedTracks = () => axios.get(`${URL}me/tracks`, { headers });
+export const getUserSavedTracks = (limit = 8) => axios.get(`${URL}me/tracks`, { headers, params: { limit } });
 export const getUserPlaylists = () => axios.get(`${URL}me/playlists`, { headers });
 export const getUserRecentlyPlayedTracks = () => axios.get(`${URL}me/player/recently-played`, { headers });
 export const getUserFollowedArtists = () => axios.get(`${URL}me/following`, { headers, params: { type: "artist", limit: "10" } })

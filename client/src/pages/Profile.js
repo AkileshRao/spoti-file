@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 
-import { getUserDetails, getUserFollowedArtists, getUserTopTracks, getUserTopArtists } from '../utils/spotify'
+import { getUserDetails, getUserFollowedArtists, getUserTopTracks, getUserTopArtists, getUserSavedTracks } from '../utils/spotify'
 import HorizontalList from '../components/HorizontalList'
+import HorizontalGrid from '../components/HorizontalGrid'
 import Loader from '../components/Loader'
 import ProfileContainer from '../styles/pages/Profile'
 
@@ -10,6 +11,7 @@ const Profile = () => {
     const [followingCount, setFollowingCount] = useState(0)
     const [topTracks, setTopTracks] = useState(null)
     const [topArtists, setTopArtits] = useState(null)
+    const [savedTracks, setSavedTracks] = useState(null);
 
     useEffect(() => {
         getUserDetails()
@@ -33,6 +35,11 @@ const Profile = () => {
                 setTopArtits(data);
             })
             .catch(err => console.log(err))
+
+        getUserSavedTracks().then(res => {
+            const data = res.data.items.map(track => ({ id: track.track.id, name: track.track.name, image: track.track.album.images[2] }))
+            setSavedTracks(data);
+        }).catch(err => console.log(err))
     }, []);
 
     return (
@@ -56,7 +63,7 @@ const Profile = () => {
                                 </div>
                             </div>
                         </div>
-
+                        <HorizontalGrid title='SAVED TRACKS' data={savedTracks} link='/saved' type='tracks'></HorizontalGrid>
                         <HorizontalList title="TOP TRACKS" data={topTracks} link='/tracks'></HorizontalList>
                         <HorizontalList title="TOP ARTISTS" data={topArtists} link='/artists'></HorizontalList>
                     </ProfileContainer>
