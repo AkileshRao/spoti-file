@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 
-import { getUserDetails, getUsersFollowedArtists, getUsersTopTracks, getUsersTopArtists } from '../../common/scripts/spotify'
-import HorizontalList from '../../components/HorizontalList'
-import Loader from '../../components/Loader'
-import ProfileContainer from './styles'
+import { getUserDetails, getUserFollowedArtists, getUserTopTracks, getUserTopArtists } from '../utils/spotify'
+import HorizontalList from '../components/HorizontalList'
+import Loader from '../components/Loader'
+import ProfileContainer from '../styles/pages/Profile'
 
 const Profile = () => {
     const [user, setUser] = useState(null);
@@ -16,18 +16,18 @@ const Profile = () => {
             .then(res => setUser(res.data))
             .catch(err => console.log(err))
 
-        getUsersFollowedArtists()
+        getUserFollowedArtists()
             .then(res => setFollowingCount(res.data.artists.total))
             .catch(err => console.log(err))
 
-        getUsersTopTracks(10)
+        getUserTopTracks(10)
             .then(res => {
                 const data = res.data.items.map(track => ({ id: track.id, name: track.name, image: track.album.images[0] }));
                 setTopTracks(data);
             })
             .catch(err => console.log(err))
 
-        getUsersTopArtists(10)
+        getUserTopArtists(10)
             .then(res => {
                 const data = res.data.items.map(artist => ({ id: artist.id, name: artist.name, image: artist.images[0] }));
                 setTopArtits(data);

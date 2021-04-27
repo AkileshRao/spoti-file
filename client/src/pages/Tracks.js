@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
 
 import { useHistory } from 'react-router-dom'
-import { getUsersTopTracks } from '../../common/scripts/spotify'
-import { msToMinSec } from '../../common/scripts'
-import Loader from '../../components/Loader'
-import TracksContainer from './styles'
+import { getUserTopTracks } from '../utils/spotify'
+import { msToMinSec } from '../utils'
+import Loader from '../components/Loader'
+import TracksContainer from '../styles/pages/Tracks'
 
 const Tracks = () => {
     const history = useHistory()
     const [tracks, setTracks] = useState(null)
     useEffect(() => {
-        getUsersTopTracks(50)
+        getUserTopTracks(50)
             .then(res => setTracks(res.data.items))
             .catch(err => console.log(err))
     }, [])

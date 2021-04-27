@@ -1,7 +1,6 @@
 import { getHashParams } from "."
 import axios from 'axios'
 
-const URL = "https://api.spotify.com/v1/"
 const EXPIRATION_TIME = 3600 * 1000; // 3600 seconds * 1000 = 1 hour in milliseconds
 
 const setTokenTimestamp = () => window.localStorage.setItem('spotifile_token_timestamp', Date.now());
@@ -62,21 +61,40 @@ export const logout = () => {
 
 //APIs
 
+const URL = "https://api.spotify.com/v1/"
+
 const headers = {
     Authorization: `Bearer ${getLocalAccessToken()}`,
     'Content-Type': 'application/json',
 };
 
-export const getUserDetails = () => axios.get(`${URL}me`, { headers })
+//Track
+export const getATrack = id => axios.get(`${URL}tracks/${id}`, { headers });
 
-export const getUsersFollowedArtists = () => axios.get(`${URL}me/following`, { headers, params: { type: "artist", limit: "10" } })
+//Playlist
+export const getAPlaylist = id => axios.get(`${URL}playlists/${id}`, { headers });
+export const getPlaylistItems = id => axios.get(`${URL}playlists/${id}/tracks`, { headers, params: { country: 'IN' } });
+export const getPlaylistCover = id => axios.get(`${URL}playlists/${id}/images`, { headers });
 
-export const getUsersTopArtists = (limit = 25) => axios.get(`${URL}me/top/artists`, { headers, params: { limit } })
+//Album
+export const getAnAlbum = id => axios.get(`${URL}albums/${id}`, { headers });
+export const getAlbumTracks = id => axios.get(`${URL}albums/${id}/tracks`, { headers });
 
-export const getUsersTopTracks = (limit = 25) => axios.get(`${URL}me/top/tracks`, { headers, params: { limit } })
+//Artist
+export const getAnArtist = id => axios.get(`${URL}artists/${id}`, { headers });
+export const getRelatedArtists = id => axios.get(`${URL}artists/${id}/related-artists`, { headers });
+export const getArtistAlbums = id => axios.get(`${URL}artists/${id}/albums`, { headers });
+export const getArtistTopTracks = id => axios.get(`${URL}artists/${id}/top-tracks`, { headers, params: { country: "IN" } });
 
-export const getATrack = (id) => axios.get(`${URL}tracks/${id}`, { headers })
+//User
+export const getUserDetails = () => axios.get(`${URL}me`, { headers });
+export const getUserSavedAlbums = () => axios.get(`${URL}me/albums`, { headers });
+export const getUserSavedTracks = () => axios.get(`${URL}me/tracks`, { headers });
+export const getUserPlaylists = () => axios.get(`${URL}me/playlists`, { headers });
+export const getUserRecentlyPlayedTracks = () => axios.get(`${URL}me/player/recently-played`, { headers });
+export const getUserFollowedArtists = () => axios.get(`${URL}me/following`, { headers, params: { type: "artist", limit: "10" } })
+export const getUserTopTracks = (limit = 25) => axios.get(`${URL}me/top/tracks`, { headers, params: { limit } })
+export const getUserTopArtists = (limit = 25) => axios.get(`${URL}me/top/artists`, { headers, params: { limit } })
 
-export const getRelatedArtists = (id) => axios.get(`${URL}artists/${id}/related-artists`, { headers })
 
-export const getArtistTopTracks = (id) => axios.get(`${URL}artists/${id}/top-tracks`, { headers, params: { country: "IN" } })
+

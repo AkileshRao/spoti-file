@@ -1,5 +1,5 @@
 import React from 'react'
-import HorizontalListItemContainer from './styles';
+import HorizontalListItemContainer from '../styles/component/HorizontalListItem';
 
 const HorizontalListItem = ({ id, name, image }) => {
     return (

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const $GreenButton = styled.a`
+export const GreenButton = styled.a`
     text-decoration:none;
     color: var(--white);
     padding: .7rem 1.5rem;
@@ -14,7 +14,7 @@ export const $GreenButton = styled.a`
     }
 `
 
-export const $OutlineButton = styled.button`
+export const OutlineButton = styled.button`
     padding: .5rem 1rem;
     background : var(--transparent);
     cursor:pointer;
@@ -30,7 +30,7 @@ export const $OutlineButton = styled.button`
     }
 `
 
-export const $DirectionButton = styled.button`
+export const DirectionButton = styled.button`
     font-size: 1.2rem;
     border-radius: 100px;
     cursor: pointer;

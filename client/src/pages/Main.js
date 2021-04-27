@@ -1,12 +1,12 @@
 import React from 'react'
 import { Redirect, Route, useHistory, Switch } from 'react-router'
 
-import Recents from '../Recents'
-import Tracks from '../Tracks'
-import Profile from '../Profile'
-import Track from '../../components/Track'
-import Sidebar from '../../components/Sidebar'
-import MainContainer from './styles';
+import Recents from './Recents'
+import Tracks from './Tracks'
+import Profile from './Profile'
+import Track from './Track'
+import Sidebar from '../components/Sidebar'
+import MainContainer from '../styles/pages/Main';
 
 const Main = () => {
     const history = useHistory();

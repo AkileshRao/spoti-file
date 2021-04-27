@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { AiFillPlayCircle } from 'react-icons/ai'
 
-import { getArtistTopTracks, getATrack, getRelatedArtists } from '../../common/scripts/spotify';
-import { $OutlineButton } from '../../common/styles/Buttons';
-import { msToMinSec } from '../../common/scripts';
-import HorizontalList from '../HorizontalList';
-import TrackContainer from './styles';
+import { getArtistTopTracks, getATrack, getRelatedArtists } from '../utils/spotify';
+import { OutlineButton } from '../styles/common/Buttons';
+import { msToMinSec } from '../utils';
+import HorizontalList from '../components/HorizontalList';
+import TrackContainer from '../styles/pages/Track';
 
 const Track = ({ match }) => {
     const [track, setTrack] = useState(null);
@@ -25,7 +25,7 @@ const Track = ({ match }) => {
                 setTopTracks(data)
             }).catch(err => console.log(err))
         }).catch(err => console.log(err))
-    }, [])
+    }, [match.params.id])
 
     return (
         <div>
@@ -39,7 +39,7 @@ const Track = ({ match }) => {
                         <div className='track-text'>
                             <h1>{track.name}</h1>
                             <p>{msToMinSec(track.duration_ms)}&nbsp;·&nbsp;{track.album.name} ( {track.album.release_date.slice(0, 4)} )  </p>
-                            {track.artists && track.artists.map(artist => <$OutlineButton key={artist.id} style={{ margin: "0 .5rem 0 0" }}>{artist.name}</$OutlineButton>)}
+                            {track.artists && track.artists.map(artist => <OutlineButton key={artist.id} style={{ margin: "0 .5rem 0 0" }}>{artist.name}</OutlineButton>)}
                         </div>
                     </div>
                     <HorizontalList title="RELATED ARTISTS" data={relatedArtists} link="#"></HorizontalList>
