@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 const HorizontalListContainer = styled.div`
+    margin: 2rem 0;
     scroll-behavior: smooth;
     .h-list-items{
         scroll-behavior: smooth;

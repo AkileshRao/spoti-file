@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const HorizontalGridContainer = styled.div`
-    margin:2rem 0;
+    margin:3rem 0 ;
     .h-grid-head{
         margin:1rem 0;
         display: flex;
@@ -31,8 +31,8 @@ const HorizontalGridContainer = styled.div`
         }
     }
     .h-list-items{
-        display:grid;
-        grid-template-columns:1fr 1fr 1fr 1fr;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
         grid-gap:1rem;
     }
 `

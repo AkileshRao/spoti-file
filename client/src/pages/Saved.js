@@ -7,7 +7,7 @@ function Saved() {
 
     useEffect(() => {
         getUserSavedTracks().then(res => setTracks(res.data.items.map(track => track.track))).catch(err => console.log(err))
-    })
+    }, [])
 
     return (
         <div>

@@ -42,8 +42,8 @@ const Track = ({ match }) => {
                             {track.artists && track.artists.map(artist => <OutlineButton key={artist.id} style={{ margin: "0 .5rem 0 0" }}>{artist.name}</OutlineButton>)}
                         </div>
                     </div>
-                    <HorizontalList title="RELATED ARTISTS" data={relatedArtists} link="#"></HorizontalList>
-                    <HorizontalList title={`TOP TRACKS BY ${track.artists[0].name.toUpperCase()}`} data={topTracks} link="#"></HorizontalList>
+                    <HorizontalList title="RELATED ARTISTS" data={relatedArtists} link="#" type='artists'></HorizontalList>
+                    <HorizontalList title={`TOP TRACKS BY ${track.artists[0].name.toUpperCase()}`} data={topTracks} link="#" type='tracks'></HorizontalList>
                 </TrackContainer>
             }
         </div>

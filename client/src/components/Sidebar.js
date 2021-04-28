@@ -6,6 +6,7 @@ import { RiHistoryLine } from 'react-icons/ri'
 import { IoMdPower } from 'react-icons/io'
 import SidebarContainer from '../styles/component/Sidebar'
 import { logout } from '../utils/spotify'
+import { IoMdMicrophone } from "react-icons/io";
 
 const Sidebar = () => {
     const [currentPage, setCurrentPage] = useState('');
@@ -20,8 +21,9 @@ const Sidebar = () => {
             </a>
             <div className='links-list'>
                 <Link to='/profile' className={currentPage === '/profile' ? 'active nav-link' : 'nav-link'}><FaRegUserCircle /></Link>
-                <Link to='/recents' className={currentPage === '/recents' ? 'active nav-link' : 'nav-link'}><RiHistoryLine /></Link>
+                <Link to='/artists' className={currentPage === '/artists' ? 'active nav-link' : 'nav-link'}><IoMdMicrophone /></Link>
                 <Link to='/tracks' className={currentPage === '/tracks' ? 'active nav-link' : 'nav-link'}><IoMdMusicalNote /></Link>
+                <Link to='/recents' className={currentPage === '/recents' ? 'active nav-link' : 'nav-link'}><RiHistoryLine /></Link>
             </div>
             <IoMdPower className='svg-icon' onClick={logout} />
         </SidebarContainer>
