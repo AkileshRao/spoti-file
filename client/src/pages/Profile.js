@@ -64,8 +64,8 @@ const Profile = () => {
                             </div>
                         </div>
                         <HorizontalGrid title='SAVED TRACKS' data={savedTracks} link='/saved' type='tracks'></HorizontalGrid>
-                        <HorizontalList title="TOP TRACKS" data={topTracks} link='/tracks'></HorizontalList>
-                        <HorizontalList title="TOP ARTISTS" data={topArtists} link='/artists'></HorizontalList>
+                        <HorizontalList title="TOP TRACKS" data={topTracks} link='/tracks' type='tracks'></HorizontalList>
+                        <HorizontalList title="TOP ARTISTS" data={topArtists} link='/artists' type='artists'></HorizontalList>
                     </ProfileContainer>
                     :
                     <Loader />

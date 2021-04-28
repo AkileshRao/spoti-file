@@ -5,7 +5,7 @@ import HorizontalListContainer from '../styles/component/HorizontalList';
 import HorizontalListItem from './HorizontalListItem';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md'
 
-const HorizontalList = ({ title, data, link }) => {
+const HorizontalList = ({ title, data, link, type }) => {
     const listRef = useRef(null)
 
     const goBack = () => listRef.current.scrollBy(-300, 0)
@@ -23,7 +23,7 @@ const HorizontalList = ({ title, data, link }) => {
             <div className='h-list-items' ref={listRef}>
                 {
                     data && data.map(el => (
-                        <HorizontalListItem key={el.id} id={el.id} name={el.name} image={el.image.url} />
+                        <HorizontalListItem key={el.id} id={el.id} name={el.name} image={el.image.url} type={type} />
                     ))
                 }
             </div>

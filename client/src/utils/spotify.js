@@ -91,10 +91,10 @@ export const getUserDetails = () => axios.get(`${URL}me`, { headers });
 export const getUserSavedAlbums = () => axios.get(`${URL}me/albums`, { headers });
 export const getUserSavedTracks = (limit = 8) => axios.get(`${URL}me/tracks`, { headers, params: { limit } });
 export const getUserPlaylists = () => axios.get(`${URL}me/playlists`, { headers });
-export const getUserRecentlyPlayedTracks = () => axios.get(`${URL}me/player/recently-played`, { headers });
+export const getUserRecentlyPlayedTracks = (limit = 8) => axios.get(`${URL}me/player/recently-played`, { headers, params: { limit } });
 export const getUserFollowedArtists = () => axios.get(`${URL}me/following`, { headers, params: { type: "artist", limit: "10" } })
-export const getUserTopTracks = (limit = 25) => axios.get(`${URL}me/top/tracks`, { headers, params: { limit } })
-export const getUserTopArtists = (limit = 25) => axios.get(`${URL}me/top/artists`, { headers, params: { limit } })
+export const getUserTopTracks = (limit = 25, time_range = 'long_term') => axios.get(`${URL}me/top/tracks`, { headers, params: { limit, time_range } })
+export const getUserTopArtists = (limit = 25, time_range = 'long_term') => axios.get(`${URL}me/top/artists`, { headers, params: { limit, time_range } })
 
 
 
