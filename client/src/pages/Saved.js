@@ -1,17 +1,30 @@
 import React, { useEffect, useState } from 'react'
-import TrackList from '../components/TrackList'
-import { getUserSavedTracks } from '../utils/spotify'
+import SavedContainer from '../styles/pages/Saved'
+import { getUserSavedAlbums, getUserSavedTracks } from '../utils/spotify'
+import Loader from '../components/Loader'
 
 function Saved() {
     const [tracks, setTracks] = useState(null)
-
+    const [albums, setAlbums] = useState(null)
     useEffect(() => {
         getUserSavedTracks().then(res => setTracks(res.data.items.map(track => track.track))).catch(err => console.log(err))
+
+        getUserSavedAlbums().then(res => console.log(res)).catch(err => console.log(err))
     }, [])
 
     return (
         <div>
-            <TrackList title='Saved Tracks' data={tracks} filters={false} />
+            {
+                (tracks && albums) ? <SavedContainer>
+                    <div className="saved-tracks">
+                        <h1>Saved Tracks</h1>
+                    </div>
+                    <div className="saved-albums">
+                        <h1>Saved Albums</h1>
+                    </div>
+                </SavedContainer>
+                    : <Loader />
+            }
         </div>
     )
 }

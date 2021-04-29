@@ -11,8 +11,8 @@ const HorizontalGrid = ({ title, link, data, type }) => {
             </div>
             <div className='h-list-items'>
                 {
-                    data && data.map(el => (
-                        <HorizontalGridItem key={el.id} id={el.id} name={el.name} image={el.image.url} type={type} />
+                    data && data.map((el, index) => (
+                        <HorizontalGridItem key={index} id={el.id} name={el.name} image={el.image.url} type={type} />
                     ))
                 }
             </div>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import { getUserDetails, getUserFollowedArtists, getUserTopTracks, getUserTopArtists, getUserSavedTracks } from '../utils/spotify'
+import { getUserDetails, getUserFollowedArtists, getUserTopTracks, getUserTopArtists, getUserSavedTracks, getUserRecentlyPlayedTracks } from '../utils/spotify'
 import HorizontalList from '../components/HorizontalList'
 import HorizontalGrid from '../components/HorizontalGrid'
 import Loader from '../components/Loader'
@@ -11,7 +11,7 @@ const Profile = () => {
     const [followingCount, setFollowingCount] = useState(0)
     const [topTracks, setTopTracks] = useState(null)
     const [topArtists, setTopArtits] = useState(null)
-    const [savedTracks, setSavedTracks] = useState(null);
+    const [recentlyPlayedTracks, setRecentlyPlayedTracks] = useState(null);
 
     useEffect(() => {
         getUserDetails()
@@ -36,9 +36,9 @@ const Profile = () => {
             })
             .catch(err => console.log(err))
 
-        getUserSavedTracks().then(res => {
+        getUserRecentlyPlayedTracks().then(res => {
             const data = res.data.items.map(track => ({ id: track.track.id, name: track.track.name, image: track.track.album.images[2] }))
-            setSavedTracks(data);
+            setRecentlyPlayedTracks(data);
         }).catch(err => console.log(err))
     }, []);
 
@@ -63,8 +63,8 @@ const Profile = () => {
                                 </div>
                             </div>
                         </div>
-                        <HorizontalGrid title='SAVED TRACKS' data={savedTracks} link='/saved' type='tracks'></HorizontalGrid>
                         <HorizontalList title="TOP TRACKS" data={topTracks} link='/tracks' type='tracks'></HorizontalList>
+                        <HorizontalGrid title='RECENTLY PLAYED' data={recentlyPlayedTracks} link='/recents' type='tracks'></HorizontalGrid>
                         <HorizontalList title="TOP ARTISTS" data={topArtists} link='/artists' type='artists'></HorizontalList>
                     </ProfileContainer>
                     :
