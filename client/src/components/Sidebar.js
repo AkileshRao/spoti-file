@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { FaRegUserCircle } from 'react-icons/fa'
 import { IoMdMusicalNote } from 'react-icons/io'
-import { RiHistoryLine } from 'react-icons/ri'
+import { RiPlayListFill } from 'react-icons/ri'
 import { IoMdPower } from 'react-icons/io'
 import SidebarContainer from '../styles/component/Sidebar'
 import { logout } from '../utils/spotify'
@@ -24,6 +24,7 @@ const Sidebar = () => {
                 <Link to='/artists' className={currentPage === '/artists' ? 'active nav-link' : 'nav-link'}><IoMdMicrophone /></Link>
                 <Link to='/tracks' className={currentPage === '/tracks' ? 'active nav-link' : 'nav-link'}><IoMdMusicalNote /></Link>
                 <Link to='/saved' className={currentPage === '/saved' ? 'active nav-link' : 'nav-link'}><IoSave /></Link>
+                <Link to='/playlists' className={currentPage === '/playlists' ? 'active nav-link' : 'nav-link'}><RiPlayListFill /></Link>
             </div>
             <IoMdPower className='svg-icon' onClick={logout} />
         </SidebarContainer>

@@ -12,6 +12,8 @@ import Albums from './Albums'
 import Track from './Track'
 import Sidebar from '../components/Sidebar'
 import MainContainer from '../styles/pages/Main';
+import Playlists from './Playlists'
+import Playlist from './Playlist'
 
 const Main = () => {
     const history = useHistory();
@@ -28,9 +30,11 @@ const Main = () => {
                     <Route exact path='/artists' component={Artists} />
                     <Route exact path='/tracks' component={Tracks} />
                     <Route exact path='/albums' component={Albums} />
+                    <Route exact path='/playlists' component={Playlists} />
                     <Route path='/artists/:id' component={Artist} />
                     <Route path='/albums/:id' component={Album} />
                     <Route path='/tracks/:id' component={Track} />
+                    <Route path='/playlists/:id' component={Playlist} />
                     <Redirect path='*' to='/profile' />
                 </Switch>
             </div>

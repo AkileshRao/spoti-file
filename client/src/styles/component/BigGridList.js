@@ -38,8 +38,12 @@ const BigGridListContainer = styled.div`
                 p{
                     font-family: Circular Bold;
                     font-size:1.1rem;
+                    margin:.5rem 0;
                 };
                 transition: .2s ease-in-out;
+                .sub-text{
+                    font-family: Circular Book;
+                }
             }
            &:hover{
                img{

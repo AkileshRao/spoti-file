@@ -15,7 +15,7 @@ function BigGridList({ data, type, title }) {
                             <img src={element.image} alt={element.name} />
                             <div className='bg-element-info' >
                                 <p>{element.name}</p>
-                                {element.subText ? <p>{element.subText}</p> : null}
+                                {element.subText ? <p className='sub-text'>{element.subText}</p> : null}
                             </div>
                         </div>
                     ))
