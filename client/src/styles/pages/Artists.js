@@ -1,22 +1,22 @@
 import styled from "styled-components";
+import mixins from "../common/Mixins";
 
 const ArtistsContainer = styled.div`
 padding: 1rem 2rem;
 .artists-head{
     margin-bottom:2rem;
     color: var(--white);
-    display: flex;
+    ${mixins.flexSBRow};
     align-items: flex-end;
-    justify-content: space-between;
-    h1{
+    h2{
         font-family: Circular Medium; 
         margin-bottom:0;
     }
     .artists-head-filters{
-        display :flex;
-        align-items: center;
+        ${mixins.flexCenterRow};
         gap:1rem;
         p{
+            font-family: Circular Book;
             cursor:pointer;
             transition: .2s ease-in-out;
             opacity:.5;

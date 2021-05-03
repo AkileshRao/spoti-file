@@ -3,19 +3,23 @@ import AlbumContainer from '../styles/pages/Album';
 import { msToMinSec } from '../utils';
 import { getAnAlbum } from '../utils/spotify';
 import { AiFillPlayCircle } from 'react-icons/ai'
+import Loader from '../components/Loader'
+
 function Album({ match }) {
     const [album, setAlbum] = useState(null);
 
     useEffect(() => {
         getAnAlbum(match.params.id).then(res => {
-            console.log(res);
             setAlbum(res.data)
         }).catch(err => console.log(err))
     }, [])
-    return (
-        <div>
-            {
-                album &&
+
+    if (!album) {
+        return <Loader />
+    } else {
+        return (
+            <div>
+
                 <AlbumContainer>
                     <div className='a-head'>
                         <div className='a-head-image' onClick={() => { window.location.href = album.external_urls.spotify }}>
@@ -37,9 +41,11 @@ function Album({ match }) {
                         }
                     </div>
                 </AlbumContainer>
-            }
-        </div>
-    )
+
+            </div>
+        )
+    }
+
 }
 
 export default Album

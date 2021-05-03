@@ -29,23 +29,22 @@ function Saved() {
             })))
         }).catch(err => console.log(err))
     }, [])
-
-    return (
-        <div>
-            {
-                <SavedContainer>
-                    <div className="saved-tracks">
-                        <h1>Saved Tracks</h1>
-                        <VerticalList type='tracks' data={tracks} />
-                    </div>
-                    <div className="saved-albums">
-                        <h1>Saved Albums</h1>
-                        <VerticalList type='albums' data={albums} />
-                    </div>
-                </SavedContainer>
-            }
-        </div>
-    )
+    if (!tracks || !albums) {
+        return <Loader />
+    } else {
+        return (
+            <SavedContainer>
+                <div className="saved-tracks">
+                    <h2>Saved Tracks</h2>
+                    <VerticalList type='tracks' data={tracks} />
+                </div>
+                <div className="saved-albums">
+                    <h2>Saved Albums</h2>
+                    <VerticalList type='albums' data={albums} />
+                </div>
+            </SavedContainer>
+        )
+    }
 }
 
 export default Saved

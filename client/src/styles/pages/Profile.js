@@ -1,43 +1,27 @@
 import styled from 'styled-components'
+import mixins from '../common/Mixins';
 
 const ProfileContainer = styled.div`
+    padding:2rem;
     .pc-top{
-        display:flex;
-        align-items:center;
-        flex-direction:column;
+        ${mixins.flexCenterColumn};
         gap:1rem;
         margin-top:2rem;
-        img{ 
-            border-radius:100px;
-            border : 3px solid var(--green);
-            padding:.7rem;
-        }
+        img{ border-radius:100px; }
         .pc-top-data{
+            ${mixins.flexCenterColumn};
             margin:0 1rem;
-            display:flex;
-            flex-direction:column;
-            align-items:center;
-            h1{ 
-                color: var(--white);
-                margin: 0;
-            }
+            h1{ margin: 0 }
             .pc-top-data-info{
-                display:flex;
-                align-items:center;
+                ${mixins.flexCenterRow};
                 margin-bottom:.5rem;
                 gap:1.5rem;
                 .pc-top-data-info-count{
-                    display:flex;
-                    align-items:center;
-                    flex-direction:column;
-                    p{
-                        letter-spacing:2px;
-                        font-size:.9rem;
-                    }
+                    ${mixins.flexCenterColumn};
+                    p{ letter-spacing:2px; }
                     .count-heading{
                         margin:1rem 0 0 0;
                         opacity:.5 ;
-                        color: var(--white);
                     };
                     .count-value{ 
                         margin:.5rem;

@@ -8,9 +8,9 @@ export const GreenButton = styled.a`
     cursor:pointer;
     border-radius: 100px;
     transition: .2s ease-in-out;
+    font-family: Circular Bold;
     &:hover{
         background: var(--hover-green);
-        transform : scale(1.05)
     }
 `
 

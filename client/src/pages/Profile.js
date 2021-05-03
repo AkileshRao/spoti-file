@@ -42,36 +42,33 @@ const Profile = () => {
         }).catch(err => console.log(err))
     }, []);
 
-    return (
-        <div style={{ padding: '2rem' }}>
-            {
-                !user ?
-                    <ProfileContainer>
-                        {/* <div className='pc-top'>
-                            <img src={user.images[0].url} alt="" height='175' />
-                            <div className='pc-top-data'>
-                                <h1>{user.display_name}</h1>
-                                <div className='pc-top-data-info'>
-                                    <div className='pc-top-data-info-count'>
-                                        <p className='count-heading'>FOLLOWERS</p>
-                                        <p className='count-value'>{user.followers.total}</p>
-                                    </div>
-                                    <div className='pc-top-data-info-count'>
-                                        <p className='count-heading'>FOLLOWING</p>
-                                        <p className='count-value'>{followingCount}</p>
-                                    </div>
-                                </div>
+    if (!user) {
+        return <Loader />
+    } else {
+        return (
+            <ProfileContainer>
+                <div className='pc-top'>
+                    <img src={user.images[0].url} alt="" height='175' />
+                    <div className='pc-top-data'>
+                        <h1>{user.display_name}</h1>
+                        <div className='pc-top-data-info'>
+                            <div className='pc-top-data-info-count'>
+                                <p className='count-heading'>FOLLOWERS</p>
+                                <p className='count-value'>{user.followers.total}</p>
+                            </div>
+                            <div className='pc-top-data-info-count'>
+                                <p className='count-heading'>FOLLOWING</p>
+                                <p className='count-value'>{followingCount}</p>
                             </div>
                         </div>
-                        <HorizontalList title="TOP TRACKS" data={topTracks} link='/tracks' type='tracks'></HorizontalList>
-                        <HorizontalGrid title='RECENTLY PLAYED' data={recentlyPlayedTracks} link='/recents' type='tracks'></HorizontalGrid>
-                        <HorizontalList title="TOP ARTISTS" data={topArtists} link='/artists' type='artists'></HorizontalList> */}
-                    </ProfileContainer>
-                    :
-                    <Loader />
-            }
-        </div>
-    )
+                    </div>
+                </div>
+                <HorizontalList title="TOP TRACKS" data={topTracks} link='/tracks' type='tracks'></HorizontalList>
+                <HorizontalGrid title='RECENTLY PLAYED' data={recentlyPlayedTracks} link='/recents' type='tracks'></HorizontalGrid>
+                <HorizontalList title="TOP ARTISTS" data={topArtists} link='/artists' type='artists'></HorizontalList>
+            </ProfileContainer>
+        )
+    }
 }
 
 export default Profile

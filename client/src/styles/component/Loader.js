@@ -1,11 +1,12 @@
 import styled from 'styled-components'
 
 const LoaderContainer = styled.div`
-    background:var(--black);
+    background:var(--grey);
     display:flex;
     align-items:center;
     justify-content:center;
     height : 100vh;
+    transition: .2s ease-in-out;
     .icon{
         background : var(--green);
         height:75px;

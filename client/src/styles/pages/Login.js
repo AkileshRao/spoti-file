@@ -1,15 +1,13 @@
 import styled from 'styled-components'
+import mixins from '../common/Mixins';
 
 const LoginContainer = styled.div`
     background: var(--grey);
     height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-direction:column;
-
+    ${mixins.flexCenterColumn};
+    flex-direction:column;  
     .login-head{
-        color:var(--white);
+        font-family:Circular Bold;
         margin-bottom: 1rem;
         span{ 
             color: var(--green);

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import BigGridList from '../components/BigGridList'
+import Loader from '../components/Loader'
 import PlayListsContainer from '../styles/pages/Playlists'
 import { getUserPlaylists } from '../utils/spotify'
 function Playlist() {
@@ -17,12 +18,17 @@ function Playlist() {
             setPlaylists(data)
         }).catch(err => console.log(err))
     }, [])
-    return (
-        <PlayListsContainer>
-            <h1>My Playlists</h1>
-            <BigGridList data={playlists} type='playlists'></BigGridList>
-        </PlayListsContainer>
-    )
+
+    if (!playlists) {
+        return <Loader />
+    } else {
+        return (
+            <PlayListsContainer>
+                <h2>My Playlists</h2>
+                <BigGridList data={playlists} type='playlists'></BigGridList>
+            </PlayListsContainer>
+        )
+    }
 }
 
 export default Playlist

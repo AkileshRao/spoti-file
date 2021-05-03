@@ -40,23 +40,23 @@ const Tracks = () => {
             .catch(err => console.log(err))
     }
 
-    return (
-        <div>
-            {
-                tracks ? <TracksContainer>
-                    <div className="tc-head">
-                        <h1>Top Tracks</h1>
-                        <div className='tc-head-filters'>
-                            <p className={range === "long_term" ? "active" : null} onClick={() => handleRangeChange('long_term')}>All time</p>
-                            <p className={range === "short_term" ? "active" : null} onClick={() => handleRangeChange('short_term')}>Last Month</p>
-                            <p className={range === "medium_term" ? "active" : null} onClick={() => handleRangeChange('medium_term')}>Last 6 Months</p>
-                        </div>
+    if (!tracks) {
+        return <Loader />
+    } else {
+        return (
+            <TracksContainer>
+                <div className="tc-head">
+                    <h2>Top Tracks</h2>
+                    <div className='tc-head-filters'>
+                        <p className={range === "long_term" ? "active" : null} onClick={() => handleRangeChange('long_term')}>All time</p>
+                        <p className={range === "short_term" ? "active" : null} onClick={() => handleRangeChange('short_term')}>Last Month</p>
+                        <p className={range === "medium_term" ? "active" : null} onClick={() => handleRangeChange('medium_term')}>Last 6 Months</p>
                     </div>
-                    <VerticalList type='tracks' data={tracks}></VerticalList>
-                </TracksContainer> : <Loader />
-            }
-        </div>
-    )
+                </div>
+                <VerticalList type='tracks' data={tracks}></VerticalList>
+            </TracksContainer>
+        )
+    }
 }
 
 export default Tracks

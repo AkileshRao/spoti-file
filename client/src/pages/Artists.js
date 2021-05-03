@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import BigGridList from '../components/BigGridList';
 import { getUserTopArtists } from '../utils/spotify';
 import ArtistsContainer from '../styles/pages/Artists';
+import Loader from '../components/Loader'
+
 function Artists() {
     const [artists, setArtists] = useState(null);
     const [range, setRange] = useState('long_term')
@@ -21,20 +23,23 @@ function Artists() {
             })
             .catch(err => console.log(err))
     }
-
-    return (
-        <ArtistsContainer>
-            <div className='artists-head'>
-                <h1>Top Artists</h1>
-                <div className='artists-head-filters'>
-                    <p className={range === "long_term" ? "active" : null} onClick={() => handleRangeChange('long_term')}>All time</p>
-                    <p className={range === "short_term" ? "active" : null} onClick={() => handleRangeChange('short_term')}>Last Month</p>
-                    <p className={range === "medium_term" ? "active" : null} onClick={() => handleRangeChange('medium_term')}>Last 6 Months</p>
+    if (!artists) {
+        return <Loader />
+    } else {
+        return (
+            <ArtistsContainer>
+                <div className='artists-head'>
+                    <h2>Top Artists</h2>
+                    <div className='artists-head-filters'>
+                        <p className={range === "long_term" ? "active" : null} onClick={() => handleRangeChange('long_term')}>All time</p>
+                        <p className={range === "short_term" ? "active" : null} onClick={() => handleRangeChange('short_term')}>Last Month</p>
+                        <p className={range === "medium_term" ? "active" : null} onClick={() => handleRangeChange('medium_term')}>Last 6 Months</p>
+                    </div>
                 </div>
-            </div>
-            <BigGridList title='Top Artists' data={artists} type='artists' onRangeChange={handleRangeChange} filters={true} />
-        </ArtistsContainer>
-    )
+                <BigGridList title='Top Artists' data={artists} type='artists' onRangeChange={handleRangeChange} filters={true} />
+            </ArtistsContainer>
+        )
+    }
 }
 
 export default Artists
