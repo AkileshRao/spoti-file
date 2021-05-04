@@ -4,10 +4,10 @@ import { msToMinSec } from '../utils';
 import { getAnAlbum } from '../utils/spotify';
 import { AiFillPlayCircle } from 'react-icons/ai'
 import Loader from '../components/Loader'
-
+import { useHistory } from 'react-router-dom'
 function Album({ match }) {
     const [album, setAlbum] = useState(null);
-
+    const history = useHistory()
     useEffect(() => {
         getAnAlbum(match.params.id).then(res => {
             setAlbum(res.data)
@@ -34,8 +34,8 @@ function Album({ match }) {
                     <div className="a-tracks">
                         {
                             album.tracks.items.map((track, i) => (
-                                <div className='a-track'>
-                                    <p>{track.name.slice(0, 40)}... <span>{msToMinSec(track.duration_ms)}</span></p>
+                                <div className='a-track' >
+                                    <p class='track-title' onClick={() => history.push(`/tracks/${track.id}`)}>{track.name.slice(0, 40)}... <span>{msToMinSec(track.duration_ms)}</span></p>
                                     <AiFillPlayCircle onClick={() => window.location.href = track.external_urls.spotify} />                                </div>
                             ))
                         }

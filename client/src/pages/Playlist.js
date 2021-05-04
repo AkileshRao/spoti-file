@@ -3,10 +3,10 @@ import PlaylistContainer from '../styles/pages/Playlist'
 import { msToMinSec } from '../utils'
 import { getAPlaylist } from '../utils/spotify'
 import { AiFillPlayCircle } from 'react-icons/ai'
-
+import { useHistory } from 'react-router-dom'
 function Playlist({ match }) {
     const [playlist, setPlaylist] = useState(null)
-
+    const history = useHistory()
     useEffect(() => {
         getAPlaylist(match.params.id).then(res => {
             setPlaylist(res.data);
@@ -30,7 +30,7 @@ function Playlist({ match }) {
                         {
                             playlist.tracks.items.map((track, i) => (
                                 <div className='p-track'>
-                                    <p>{track.track.name.slice(0, 40)}... <span>{msToMinSec(track.track.duration_ms)}</span></p>
+                                    <p onClick={() => history.push(`/tracks/${track.track.id}`)}>{track.track.name.slice(0, 40)}... <span>{msToMinSec(track.track.duration_ms)}</span></p>
                                     <AiFillPlayCircle onClick={() => window.location.href = track.track.external_urls.spotify} />
                                 </div>
                             ))

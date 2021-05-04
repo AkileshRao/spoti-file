@@ -34,15 +34,15 @@ function Artist({ match }) {
                 artist &&
                 <ArtistContainer>
                     <div className='a-head'>
-                        <img src={artist.images[0].url} alt={artist.name} height='150' />
+                        <img src={artist.images[0].url} alt={artist.name} height='200' />
                         <div className='a-head-info'>
                             <h1>{artist.name}</h1>
-                            {artist.genres && artist.genres.map(genre => <OutlineButton style={{ marginRight: '.5rem' }}>{genre}</OutlineButton>)}
                             <p className='popularity'><span>{artist.popularity}%</span> popularity</p>
+                            {artist.genres && artist.genres.map(genre => <OutlineButton style={{ marginRight: '.5rem' }}>{genre}</OutlineButton>)}
                         </div>
                     </div>
-                    <HorizontalGrid title='TOP TRACKS' data={tracks} link='#' type='tracks'></HorizontalGrid>
-                    <HorizontalList title='ALBUMS' data={albums} link='#' type='albums'></HorizontalList>
+                    <HorizontalGrid title='ALBUMS' data={albums} link='#' type='albums'></HorizontalGrid>
+                    <HorizontalList title='TOP TRACKS' data={tracks} link='#' type='tracks'></HorizontalList>
                     <HorizontalList title='RELATED ARTISTS' data={relatedArtists} type='artists' ></HorizontalList>
                 </ArtistContainer>
             }

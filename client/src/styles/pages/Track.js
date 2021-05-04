@@ -1,19 +1,18 @@
 import styled from 'styled-components';
+import mixins from '../common/Mixins'
 
 const TrackContainer = styled.div`
     color : var(--white);
     padding:2rem;
     .track-info{
-        display: flex;
-        align-items:center;
+        ${mixins.flexCenterRow};
+        justify-content:flex-start;
         gap:1.5rem;
-        margin-bottom:2rem;
+        margin:1rem 0 4rem 0;
         h1{ margin : .5rem 0};
         .track-image{
             position:relative;
-            display:flex;
-            align-items:center;
-            justify-content : center;
+            ${mixins.flexCenterRow};
             cursor:pointer;
             img{
                 transition: .2s ease-in-out;
@@ -35,9 +34,6 @@ const TrackContainer = styled.div`
         p{
             margin : .5rem 0 .8rem 0;
             opacity: .5;
-            font-family: Circular Book;
-            letter-spacing : 1px;
-            font-size : .9rem;
         }
     }
     .related-artists{ margin-top:2rem }

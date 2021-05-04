@@ -15,14 +15,28 @@ const LoaderContainer = styled.div`
         display:flex;
         align-items:center;
         justify-content:center;
-        flex-direction:column;
         gap:7px;
         .icon-line{
+            animation :loading;
+            animation-duration : .5s;
+            animation-iteration-count : infinite;
+            animation-direction: alternate;
             background: var(--grey);
-            height: 7px; 
+            height: 30px; 
             border-radius: 100px;
-            width : calc(100% - 30px);
+            width : 7px
         }
+        .line-two{
+            animation-delay:.25s;
+        }
+        .line-three{
+            animation-delay:.5s;
+        }
+    }
+    
+    @keyframes loading{
+        from { height : 10px;}
+        to {height :35px;}
     }
 `
 

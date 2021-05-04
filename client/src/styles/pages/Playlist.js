@@ -36,6 +36,7 @@ const PlaylistContainer = styled.div`
                 margin:0;
                 display: flex;
                 flex-direction:column;
+                cursor:pointer;
                 span{
                     opacity:.5; 
                     font-size: .9rem;

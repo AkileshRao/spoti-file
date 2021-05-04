@@ -21,6 +21,10 @@ const TracksContainer = styled.div`
                 transition: .2s ease-in-out;
                 opacity:.5;
                 margin:0;
+                &:hover{
+                    opacity: 1;
+                    font-family: Circular Bold;    
+                }
             }
             .active{
                 opacity: 1;

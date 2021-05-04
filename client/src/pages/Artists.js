@@ -36,7 +36,7 @@ function Artists() {
                         <p className={range === "medium_term" ? "active" : null} onClick={() => handleRangeChange('medium_term')}>Last 6 Months</p>
                     </div>
                 </div>
-                <BigGridList title='Top Artists' data={artists} type='artists' onRangeChange={handleRangeChange} filters={true} />
+                <BigGridList data={artists} type='artists' onRangeChange={handleRangeChange} filters={true} />
             </ArtistsContainer>
         )
     }

@@ -5,7 +5,7 @@ const AlbumContainer = styled.div`
     padding:3rem;
     color : var(--white);
     display:flex;
-    align-items:center;
+    align-items:flex-start;
     gap:2rem;
     .a-head{
         display:flex;
@@ -23,7 +23,6 @@ const AlbumContainer = styled.div`
     }
     .a-tracks{
         flex:1;
-        margin-top:2rem;
         h5 {letter-spacing : 3px}
         .a-track{
             padding:.7rem;
@@ -32,6 +31,7 @@ const AlbumContainer = styled.div`
             align-items:center;
             justify-content:space-between;
             p{
+                cursor: pointer;
                 margin:0;
                 display: flex;
                 flex-direction:column;

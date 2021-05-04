@@ -63,8 +63,8 @@ const Profile = () => {
                         </div>
                     </div>
                 </div>
-                <HorizontalList title="TOP TRACKS" data={topTracks} link='/tracks' type='tracks'></HorizontalList>
                 <HorizontalGrid title='RECENTLY PLAYED' data={recentlyPlayedTracks} link='/recents' type='tracks'></HorizontalGrid>
+                <HorizontalList title="TOP TRACKS" data={topTracks} link='/tracks' type='tracks'></HorizontalList>
                 <HorizontalList title="TOP ARTISTS" data={topArtists} link='/artists' type='artists'></HorizontalList>
             </ProfileContainer>
         )

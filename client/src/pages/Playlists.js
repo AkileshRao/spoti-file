@@ -8,7 +8,6 @@ function Playlist() {
 
     useEffect(() => {
         getUserPlaylists().then(res => {
-            console.log(res);
             const data = res.data.items.map(album => ({
                 id: album.id,
                 name: album.name,
