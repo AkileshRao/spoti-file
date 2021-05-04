@@ -32,6 +32,15 @@ const TracksContainer = styled.div`
             }
         }
     }
+
+    @media(max-width:426px){
+        padding:1rem;
+        .tc-head{
+            flex-direction:column !important;
+            align-items:center;
+            gap:1rem;
+        }
+    }
 `
 
 export default TracksContainer

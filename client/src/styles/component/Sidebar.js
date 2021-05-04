@@ -50,6 +50,26 @@ const SidebarContainer = styled.div`
             opacity:1;
         }
     }
+
+    @media(max-width: 769px){
+        flex-direction:row;
+        position: fixed;
+        bottom: 0px;
+        height: fit-content;
+        width: 100vw;
+        padding:0;
+        .svg-icon, img{display:none};
+        .links-list{
+            flex-direction:row;
+            .nav-link{
+                border-left:0px !important;
+                border-top:5px solid var(--black);
+                &:hover, &.active{
+                    border-top:5px solid var(--green) !important;
+                }
+            }
+        }
+    }
 `
 
 export default SidebarContainer;

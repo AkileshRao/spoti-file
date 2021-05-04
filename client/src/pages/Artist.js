@@ -38,7 +38,9 @@ function Artist({ match }) {
                         <div className='a-head-info'>
                             <h1>{artist.name}</h1>
                             <p className='popularity'><span>{artist.popularity}%</span> popularity</p>
-                            {artist.genres && artist.genres.map(genre => <OutlineButton style={{ marginRight: '.5rem' }}>{genre}</OutlineButton>)}
+                            <div>
+                                {artist.genres && artist.genres.map((genre, i) => <OutlineButton key={i} style={{ margin: '.5rem .5rem .5rem 0' }}>{genre}</OutlineButton>)}
+                            </div>
                         </div>
                     </div>
                     <HorizontalGrid title='ALBUMS' data={albums} link='#' type='albums'></HorizontalGrid>

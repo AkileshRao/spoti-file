@@ -35,7 +35,7 @@ function Album({ match }) {
                         {
                             album.tracks.items.map((track, i) => (
                                 <div className='a-track' >
-                                    <p class='track-title' onClick={() => history.push(`/tracks/${track.id}`)}>{track.name.slice(0, 40)}... <span>{msToMinSec(track.duration_ms)}</span></p>
+                                    <p className='track-title' onClick={() => history.push(`/tracks/${track.id}`)}>{track.name.slice(0, 40)}... <span>{msToMinSec(track.duration_ms)}</span></p>
                                     <AiFillPlayCircle onClick={() => window.location.href = track.external_urls.spotify} />                                </div>
                             ))
                         }

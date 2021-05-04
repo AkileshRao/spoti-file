@@ -40,11 +40,13 @@ const Track = ({ match }) => {
                         <div className='track-text'>
                             <h1>{track.name}</h1>
                             <p>{msToMinSec(track.duration_ms)}&nbsp;·&nbsp;{track.album.name} &nbsp;·&nbsp; {track.album.release_date.slice(0, 4)}   </p>
-                            {track.artists && track.artists.map(artist => <OutlineButton key={artist.id} style={{ margin: "0 .5rem 0 0" }} onClick={() => history.push(`/artists/${artist.id}`)}>{artist.name}</OutlineButton>)}
+                            <div>
+                                {track.artists && track.artists.map(artist => <OutlineButton style={{ margin: '.5rem .5rem .5rem 0' }} key={artist.id} onClick={() => history.push(`/artists/${artist.id}`)}>{artist.name}</OutlineButton>)}
+                            </div>
                         </div>
                     </div>
                     <HorizontalList title="RELATED ARTISTS" data={relatedArtists} link="#" type='artists'></HorizontalList>
-                    <HorizontalList title={`TOP TRACKS BY ${track.artists[0].name.toUpperCase()}`} data={topTracks} link="#" type='tracks'></HorizontalList>
+                    <HorizontalList title={`TOP TRACKS`} data={topTracks} link="#" type='tracks'></HorizontalList>
                 </TrackContainer>
             }
         </div>

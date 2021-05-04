@@ -9,6 +9,14 @@ const MainContainer = styled.div`
         min-height: 100vh;
         height: 100%;
     }
+
+    @media(max-width:769px){
+        flex-direction:column-reverse;
+        .routes{
+            padding-left:0;
+            padding-bottom : 4rem;
+        }
+    }
 `
 
 export default MainContainer;

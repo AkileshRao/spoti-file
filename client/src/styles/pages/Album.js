@@ -50,6 +50,15 @@ const AlbumContainer = styled.div`
             }
         }
     }
+
+    @media(max-width:769px){
+        padding:2rem 1rem;
+        flex-direction:column;
+        align-items:center;
+        .a-tracks,.a-track{
+            width:100%;
+        }
+    }
 `
 
 export default AlbumContainer

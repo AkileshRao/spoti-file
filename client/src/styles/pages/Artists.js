@@ -32,5 +32,13 @@ padding: 1rem 2rem;
         }
     }
 }
+
+@media(max-width:426px){
+    .artists-head{
+        flex-direction:column !important;
+        align-items:center;
+        gap:1rem;
+    }
+}
 `
 export default ArtistsContainer

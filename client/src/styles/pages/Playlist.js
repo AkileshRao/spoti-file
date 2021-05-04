@@ -52,6 +52,15 @@ const PlaylistContainer = styled.div`
             }
         }
     }
+
+    @media(max-width:769px){
+        padding:2rem 1rem;
+        flex-direction:column;
+        align-items:center;
+        .p-tracks,.p-track{
+            width:100%;
+        }
+    }
 `
 
 export default PlaylistContainer

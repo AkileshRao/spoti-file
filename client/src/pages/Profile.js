@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 
-import { getUserDetails, getUserFollowedArtists, getUserTopTracks, getUserTopArtists, getUserSavedTracks, getUserRecentlyPlayedTracks } from '../utils/spotify'
+import { getUserDetails, getUserFollowedArtists, getUserTopTracks, getUserTopArtists, getUserSavedTracks, getUserRecentlyPlayedTracks, logout } from '../utils/spotify'
 import HorizontalList from '../components/HorizontalList'
 import HorizontalGrid from '../components/HorizontalGrid'
 import Loader from '../components/Loader'
 import ProfileContainer from '../styles/pages/Profile'
-
+import { OutlineButton } from '../styles/common/Buttons'
 const Profile = () => {
     const [user, setUser] = useState(null);
     const [followingCount, setFollowingCount] = useState(0)
@@ -61,6 +61,7 @@ const Profile = () => {
                                 <p className='count-value'>{followingCount}</p>
                             </div>
                         </div>
+                        <OutlineButton className='logout-button' onClick={logout}>Logout</OutlineButton>
                     </div>
                 </div>
                 <HorizontalGrid title='RECENTLY PLAYED' data={recentlyPlayedTracks} link='/recents' type='tracks'></HorizontalGrid>

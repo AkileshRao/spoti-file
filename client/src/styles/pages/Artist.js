@@ -15,6 +15,21 @@ const ArtistContainer = styled.div`
             span{ color :var(--green)};
         }
     }
+
+    @media(max-width:426px){
+        .a-head{
+            text-align:center;
+            flex-direction:column !important;
+            align-items:center;
+            gap:1rem;
+            .a-head-info{
+                display:flex;
+                flex-direction:column;
+                align-items:center;
+                gap:.5rem;
+            }
+        }
+    }
 `
 
 export default ArtistContainer;

@@ -29,7 +29,7 @@ function Playlist({ match }) {
                     <div className="p-tracks">
                         {
                             playlist.tracks.items.map((track, i) => (
-                                <div className='p-track'>
+                                <div className='p-track' key='i'>
                                     <p onClick={() => history.push(`/tracks/${track.track.id}`)}>{track.track.name.slice(0, 40)}... <span>{msToMinSec(track.track.duration_ms)}</span></p>
                                     <AiFillPlayCircle onClick={() => window.location.href = track.track.external_urls.spotify} />
                                 </div>

@@ -38,6 +38,13 @@ const HorizontalListContainer = styled.div`
             margin-bottom: 1rem;
         }
     }
+
+    @media(max-width:769px){
+        .h-list-items{
+            width: calc(100vw - 65px);
+
+        }
+    }
 `
 
 export default HorizontalListContainer;

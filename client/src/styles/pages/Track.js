@@ -37,6 +37,19 @@ const TrackContainer = styled.div`
         }
     }
     .related-artists{ margin-top:2rem }
+
+    @media(max-width:426px){
+        .track-info{
+            flex-direction:column !important;
+            align-items:center;
+            gap:1rem;
+            .track-text{
+                display:flex;
+                flex-direction:column;
+                align-items:center;
+            }
+        }
+    }
 `
 
 export default TrackContainer;

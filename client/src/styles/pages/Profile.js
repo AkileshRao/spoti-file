@@ -29,6 +29,18 @@ const ProfileContainer = styled.div`
                     }
                 }
             }
+
+            .logout-button{
+                position:absolute;
+                top:1rem;
+                right:1rem;
+            }
+        }
+    }
+
+    @media(min-width:769px){
+        .logout-button{
+            display:none;
         }
     }
 `
