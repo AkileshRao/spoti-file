@@ -28,9 +28,13 @@ const generateRandomString = function (length) {
 
 const stateKey = 'spotify_auth_state';
 
+app.use(express.static(path.resolve(__dirname + '../client/build')));
+
 app.use(express.static(path.resolve(__dirname + '../client/build')))
     .use(cors())
-    .use(cookieParser());
+    .use(cookieParser())
+    .use(express.static(path.resolve(__dirname + '../client/build')))
+
 
 app.get('/', function (req, res) {
     res.render(path.resolve(__dirname, '../client/build/index.html'));
@@ -133,7 +137,7 @@ app.get('/refresh_token', function (req, res) {
 });
 
 app.get('*', function (request, response) {
-    response.sendFile(path.resolve(__dirname, '../client/public', 'index.html'));
+    response.sendFile(path.resolve(__dirname, '../client/build/index.html'));
 });
 
 app.listen(PORT, () => console.log("Server running on 8888"))
