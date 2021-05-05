@@ -11,7 +11,7 @@ function Playlist({ match }) {
         getAPlaylist(match.params.id).then(res => {
             setPlaylist(res.data);
         }).catch(err => console.log(err))
-    })
+    }, [])
     return (
         <div>
             {
