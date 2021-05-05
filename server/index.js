@@ -6,6 +6,7 @@ const cors = require('cors');
 const querystring = require('querystring');
 const cookieParser = require('cookie-parser');
 const app = express()
+const path = require('path')
 const PORT = process.env.PORT || 8888;
 
 const CLIENT_ID = process.env.CLIENT_ID
@@ -27,9 +28,13 @@ const generateRandomString = function (length) {
 
 const stateKey = 'spotify_auth_state';
 
-app.use(express.static(__dirname + '../client/public'))
+app.use(express.static(path.resolve(__dirname + '../client/build')))
     .use(cors())
     .use(cookieParser());
+
+app.get('/', function (req, res) {
+    res.render(path.resolve(__dirname, '../client/build/index.html'));
+});
 
 app.get('/login', function (req, res) {
     let state = generateRandomString(16);
@@ -125,6 +130,10 @@ app.get('/refresh_token', function (req, res) {
             });
         }
     });
+});
+
+app.get('*', function (request, response) {
+    response.sendFile(path.resolve(__dirname, '../client/public', 'index.html'));
 });
 
 app.listen(PORT, () => console.log("Server running on 8888"))
