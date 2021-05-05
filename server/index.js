@@ -6,12 +6,12 @@ const cors = require('cors');
 const querystring = require('querystring');
 const cookieParser = require('cookie-parser');
 const app = express()
-const PORT = '8000';
+const PORT = '8888';
 
 const CLIENT_ID = process.env.CLIENT_ID
 const CLIENT_SECRET = process.env.CLIENT_SECRET
-const REDIRECT_URI = "http://localhost:8000/callback"
-const FRONTEND_URI = "http://localhost:3000"
+let REDIRECT_URI = process.env.REDIRECT_URI || 'http://localhost:8888/callback';
+let FRONTEND_URI = process.env.FRONTEND_URI || 'http://localhost:3000';
 
 
 const generateRandomString = function (length) {
@@ -125,4 +125,4 @@ app.get('/refresh_token', function (req, res) {
     });
 });
 
-app.listen(PORT, () => console.log("Server running on 8000"))
+app.listen(PORT, () => console.log("Server running on 8888"))
